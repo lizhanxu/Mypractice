@@ -19,6 +19,8 @@
         <module>Spring</module>
         <module>SpringMVC</module>
         <module>JavaBase</module>
+        <module>Netty</module>
+        <module>Mybatis</module>
     </modules>
 
     <!--定义变量的值-->
