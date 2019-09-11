@@ -2,23 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--固定为4.0.0-->
     <modelVersion>4.0.0</modelVersion>
 
+    <!--组织的唯一标识-->
     <groupId>com.lizhanxu.mypractice</groupId>
+    <!--项目的唯一标识-->
     <artifactId>MyPractice</artifactId>
+    <!--项目版本-->
     <version>1.0.0</version>
 
+    <!--父模块必须以pom打包类型，同时以<modules>给出所有的子模块-->
+    <packaging>pom</packaging>
+    <modules>
+        <module>Spring</module>
+        <module>SpringMVC</module>
+        <module>JavaBase</module>
+    </modules>
+
+    <!--定义变量的值-->
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>4.3.18.RELEASE</version>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
