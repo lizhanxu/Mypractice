@@ -1,0 +1,2 @@
+className = JavaBase.JavaReflect.ReflectServiceImpl
+methodName = sayHello
