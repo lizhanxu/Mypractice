@@ -12,6 +12,7 @@
     <artifactId>Spring</artifactId>
 
     <dependencies>
+        <!--引入springframework-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

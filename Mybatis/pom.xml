@@ -12,6 +12,7 @@
     <artifactId>Mybatis</artifactId>
 
     <dependencies>
+        <!--引入mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
