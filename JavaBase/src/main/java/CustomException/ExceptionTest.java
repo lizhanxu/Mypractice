@@ -10,7 +10,7 @@ public class ExceptionTest {
 
     /**
      * main方法throws将异常抛给JVM
-     * JVN对异常的处理方法是，打印异常跟踪栈信息，并终止程序云行
+     * JVN对异常的处理方法是，打印异常跟踪栈信息，并终止程序运行
      */
 
     public static void main(String[] args) {
