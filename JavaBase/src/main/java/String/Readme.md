@@ -21,3 +21,30 @@
 #####②共享内部数组，节约内存
 
 #####`public String trim();`//去掉字符串首尾的空格' '
+
+###AbstractStringBuilder源码阅读笔记
+
+####容量分配算法
+
+`if(指定最小容量为负数)`<br>
+`{ensureCapacity不会有任何行为}`<br>
+`else if(当前容量比指定最小容量小)`<br>
+`{重新分配更大容量的数组}`
+<br><br>
+#####新容量newCapacity分配原则为：
+`首先默认新容量为当前容量的2倍加2`<br>
+`if(这个默认新容量仍然小于指定的最小容量)`<br>
+`{则新容量赋值为指定的最小容量}`
+<br><br>
+#####接下来要考虑新容量溢出的问题:
+`if(newCapacity <= 0 || MAX_ARRAY_SIZE - newCapacity < 0)`<br>
+`{进行大容量分配算法hugeCapacity}`
+#####（补充知识：java中没有无符号类型，所以数值溢出时会变成负数）
+#####`newCapacity <= 0`是因为newCapacity是移位运算得到的,newCapacity溢出了int的数值范围，溢出到最高位置为1，就变成了负数<br><br>
+
+#####hugeCapacity算法分配的容量newCapacity=MAX_ARRAY_SIZE或者MAX_ARRAY_SIZ<newCapacity<Integer.MAX_VALUE,
+#####newCapacity>Integer.MAX_VALUE则抛出内存溢出错误<br><br>
+
+`private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;`<br>
+//减8是因为某些虚拟机会在数组中保留一些头信息，比Integer.MAX_VALUE - 8更大<br>
+<u>**可能**</u>给会导致内存溢出，比Integer.MAX_VALUE更大肯定内存溢出
