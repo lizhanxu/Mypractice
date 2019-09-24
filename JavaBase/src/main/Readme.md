@@ -1,6 +1,5 @@
 ###子类去实现父类已实现的接口
 
-
 `class A implements Interface`<br>
 `class B extends A`<br>
 `class C extends A implements Interface.`<br>

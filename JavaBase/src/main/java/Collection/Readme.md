@@ -94,6 +94,8 @@ LinkedHashMap 有序，迭代顺序可以是插入顺序，也可以是访问顺
 
 ####补充：
 
+Comparator中    (Comparator & Serializable)创建的对象同时实现这两个接口
+
 Stream API用来丰富集合操作， .stream() 方法将常规数组转化为流
 
 fail-fast与fail-safe
