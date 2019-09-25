@@ -2,12 +2,12 @@ package Thread;
 
 
 /**
- * @ClassName FirstThread
+ * @ClassName MultithreadTest
  * @Author lizhanxu
  * @Date 2019/8/23  15:04
  * @Version V1.0.0
  */
-public class FirstThread extends Thread {
+public class MultithreadTest extends Thread {
 
     private int i;
 
@@ -25,8 +25,8 @@ public class FirstThread extends Thread {
         for (int i =1;i<100;i++){
             System.out.println(Thread.currentThread().getName()+"----->"+i);
             if (i==20){
-                new FirstThread().start();
-                new FirstThread().start();
+                new MultithreadTest().start();
+                new MultithreadTest().start();
             }
         }
     }

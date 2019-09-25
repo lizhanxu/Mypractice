@@ -24,6 +24,7 @@
     </modules>
 
     <!--定义变量的值-->
+    <!--Maven中占位符用${}-->
     <properties>
         <java.version>1.8</java.version>
     </properties>
