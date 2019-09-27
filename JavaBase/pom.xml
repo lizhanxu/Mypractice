@@ -11,5 +11,14 @@
 
     <artifactId>JavaBase</artifactId>
 
+    <!--加载mysql驱动所需要添加的依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.13</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
