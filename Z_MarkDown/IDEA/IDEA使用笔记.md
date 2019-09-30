@@ -1,0 +1,1 @@
+Help->Show log in Explore    查看IDEA详细log

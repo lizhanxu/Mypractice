@@ -1,3 +1,5 @@
+###javax的x是extension的意思，也就是扩展包
+
 ###子类去实现父类已实现的接口
 
 `class A implements Interface`<br>
