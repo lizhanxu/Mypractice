@@ -13,10 +13,12 @@
 
     <dependencies>
         <!--引入springframework-->
+        <!--包和包之间也有依赖关系，添加一个依赖会下载这个依赖以及这个依赖所需要的包-->
+        <!--context依赖于aop、beans、core、expression、jcl-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.3.18.RELEASE</version>
+            <version>5.1.9.RELEASE</version>
         </dependency>
     </dependencies>
 

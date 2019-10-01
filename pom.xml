@@ -27,10 +27,17 @@
     <!--Maven中占位符用${}-->
     <properties>
         <java.version>1.8</java.version>
+
+        <!--两种方式，参考网址：https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html
+            方式一，通过默认属性名配置插件参数-->
+        <!--<maven.compiler.source>1.8</maven.compiler.source>-->
+        <!--<maven.compiler.target>1.8</maven.compiler.target>-->
+
     </properties>
 
     <build>
         <plugins>
+            <!--方式二，直接配置插件-->
             <!--maven编译插件，若不声明，则maven采用默认的相关配置-->
             <!-- 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 -->
             <plugin>

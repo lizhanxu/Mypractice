@@ -17,6 +17,10 @@
 
 ####POM(Project Object Model 项目对象模型)
 
+####[The Super Pom](http://maven.apache.org/pom.html#The_Super_POM)
+
+    性质和Object一样，所有pom的隐式继承The Super Pom
+
 ####生命周期和插件
 
    [生命周期](https://www.runoob.com/maven/maven-build-life-cycle.html)
@@ -32,6 +36,8 @@
     可以把插件插入到构建(build)生命周期的指定详细阶段(具体到某一阶段前后，如pre-clean、clean、post-clean)
     
     当一个阶段通过 Maven 命令调用时，例如 mvn compile，只有该阶段之前以及包括该阶段在内的所有阶段会被执行。
+    
+    archetype插件，根据模板创建一个项目
 
 ####Maven的全局配置文件   settings.xml
     位置：${user.home}\.m2\settings.xml
@@ -84,10 +90,24 @@
 
 ####IDEA中的Maven
     IDEA默认带有两个版本的Maven(Maven2、Maven3)，默认选择Maven3
+    
     可以在Settings->Build->Build Tools->Maven中修改Maven相关
+    
     Maven 3.6.2版本和IDEA存在兼容性问题，降低到3.6.1版本就没有这个问题了
+    
+   **非常重要！！！在pom.xml中使用alt+insert快捷键添加和管理依赖**
     
 ####[快照(snapshot)](https://www.runoob.com/maven/maven-snapshots.html)
 
 ####配置文件  profile
+    profile 可以让我们定义一系列的配置信息，有多种激活方式。
+
     可以用于切换测试环境和正式环境
+    
+####dependencies和dependencyManagement的区别
+
+    dependencies即使在子项目中不写该依赖项，那么子项目仍然会从父项目中继承该依赖项（全部继承）
+    
+    dependencyManagement里只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖。如果不在子项目中声明依赖，
+    是不会从父项目中继承下来的；只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，并且version和
+    scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本。
