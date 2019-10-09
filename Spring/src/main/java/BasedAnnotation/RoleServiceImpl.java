@@ -1,4 +1,4 @@
-package Autowire;
+package BasedAnnotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,6 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoleServiceImpl implements RoleService {
 
+    /**
+     * 默认是根据类型装配
+     * 默认required=true，即装配失败会抛出异常
+     */
     @Autowired
     private Role role = null;
 

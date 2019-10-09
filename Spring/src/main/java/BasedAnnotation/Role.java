@@ -1,4 +1,4 @@
-package Autowire;
+package BasedAnnotation;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -9,10 +9,11 @@ import org.springframework.stereotype.Component;
  * @Date 2019/8/21  16:35
  * @Version V1.0.0
  */
-@Component("role")
+//@Component代表IoC会把这个类扫描生成Bean实例
+@Component("role")//value="role"相当于XML中的Bean的id
 public class Role {
 
-    @Value("1")
+    @Value("1")//通过这个注解注入一些简单值，String会自动转型
     private Long id;
 
     @Value("role_name_1")
