@@ -104,3 +104,6 @@
     包含数据库连接池和连接池管理两部分
     习惯上常把DataSource称为连接池
 ###两种开源的数据源实现——DBCP和C3P0
+    DBCP：Tomcat的连接池
+    C3PO：Hibernate推荐该连接池
+    C3PO连接池比DBCP性能更好，自动清理不再使用的Connection、Statement、ResultSet

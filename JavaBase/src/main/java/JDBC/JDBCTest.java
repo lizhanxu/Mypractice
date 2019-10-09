@@ -43,7 +43,7 @@ public class JDBCTest {
      * @param conn
      * @throws SQLException
      */
-    private void queryUseStatement(Connection conn) throws SQLException {
+    public void queryUseStatement(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();//③通过Connection对象创建Statement对象
         ResultSet rs = stmt.executeQuery("select * from jdbctest");//④使用Statement执行SQL语句，并得到结果集
         while (rs.next()) {//⑤操作结果集
@@ -95,6 +95,16 @@ public class JDBCTest {
         url = props.getProperty("url");
         username = props.getProperty("username");
         password = props.getProperty("password");
+    }
+
+    public Properties getParams(String paramFile) {
+        Properties props = new Properties();
+        try {
+            props.load(new FileInputStream(paramFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return props;
     }
 
     /**

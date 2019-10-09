@@ -95,8 +95,12 @@
     
     Maven 3.6.2版本和IDEA存在兼容性问题，降低到3.6.1版本就没有这个问题了
     
-   **非常重要！！！在pom.xml中使用alt+insert快捷键添加和管理依赖**
-    
+####添加依赖的方式
+    ①在pom.xml中使用alt+insert快捷键添加和管理依赖
+    ②在各大仓库的网站上搜索依赖，会提供添加依赖的代码或者直接下载jar包
+    ③在Module上右键，点击Open Module Settings（F4），弹出Project Structure窗口
+      Modules->选择模块->Dependencies->点+号->Library->New Library->From Maven->搜索依赖并添加
+
 ####[快照(snapshot)](https://www.runoob.com/maven/maven-snapshots.html)
 
 ####配置文件  profile
