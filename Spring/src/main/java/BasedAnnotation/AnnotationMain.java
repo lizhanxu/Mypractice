@@ -4,9 +4,11 @@ import BasedAnnotation.Component.DataSourceTest;
 import BasedAnnotation.Controller.RoleController;
 import BasedAnnotation.Pojo.Role;
 import BasedAnnotation.Service.RoleService;
+import Proxy.JdkDynamicProxy.HelloWorld;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @ClassName AnnotationMain
@@ -21,9 +23,16 @@ import org.springframework.context.annotation.ComponentScan;
 //默认是扫描当前包的路径
 //不要采用多个@ComponentScan，因为一旦重复扫包就会产生重复Bean实例
 @ComponentScan
+//   file:///  代表文件系统，绝对路径
+//@ImportResource("file:///WorkSpace/Mypractice/Spring/src/main/resource/HelloWorldConfig.xml")
+@ImportResource("classpath:HelloWorldConfig.xml")//classpath:代表在Maven约定的资源文件夹下面(即${basedir}/src/main/resources)，注意路径一定要严格按照约定
 public class AnnotationMain {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AnnotationMain.class);
+
+        HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorldImpl");
+        helloWorld.sayHelloWorld();
+
         Role role = context.getBean(Role.class);
         System.out.println(role.getId());
 

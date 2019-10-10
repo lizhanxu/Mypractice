@@ -25,6 +25,7 @@ public class DataSourceTest {
         try {
             Connection conn = dataSource.getConnection();
             jdbcTest.queryUseStatement(conn);
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
