@@ -97,7 +97,7 @@
     
 ####添加依赖的方式
     ①在pom.xml中使用alt+insert快捷键添加和管理依赖
-    ②在各大仓库的网站上搜索依赖，会提供添加依赖的代码或者直接下载jar包
+    ②在各大仓库的网站上搜索依赖，会提供添加依赖的代码或者直接下载jar包      https://mvnrepository.com
     ③在Module上右键，点击Open Module Settings（F4），弹出Project Structure窗口
       Modules->选择模块->Dependencies->点+号->Library->New Library->From Maven->搜索依赖并添加
 
