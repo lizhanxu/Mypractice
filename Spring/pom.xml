@@ -40,7 +40,21 @@
             <artifactId>aspectjrt</artifactId>
             <version>1.5.3</version>
         </dependency>
-        <!--引入c3p0-->
+        <!--对事务的支持-->
+        <!--例如使用@Transactional-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-tx</artifactId>-->
+            <!--<version>5.1.8.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--对切面自动生成代理(即织入)的支持-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+
+        <!--引入c3p0数据源-->
         <!--<dependency>-->
             <!--<groupId>c3p0</groupId>-->
             <!--<artifactId>c3p0</artifactId>-->

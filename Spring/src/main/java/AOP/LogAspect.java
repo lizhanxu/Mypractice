@@ -19,7 +19,8 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class LogAspect {
-    @Pointcut("@annotation(AOP.Action)")
+
+    @Pointcut("@annotation(AOP.Action)")//通过 @Pointcut来实现切点复用
     public void annotationPointCut() {
 
     }
@@ -29,13 +30,13 @@ public class LogAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         Action action = method.getAnnotation(Action.class);
-        System.out.println("注解式拦截"+action.name());
+        System.out.println("后置通知   "+action.name());
     }
 
-//    @Before("execution(*AOP.DemoMethodService.*(..))")
+    @Before("execution(* AOP.DemoMethodService.*(..))")//注意第一个*后面跟空格
     public void before(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-        System.out.println("方法规则式拦截"+method.getName());
+        System.out.println("前置通知   方法规则式拦截"+method.getName()+"方法");
     }
 }
