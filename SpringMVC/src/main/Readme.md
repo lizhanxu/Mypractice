@@ -12,13 +12,4 @@
     接收请求，将请求跳转到模型进行处理；模型处理完在将结果返回给控制器，由控制器给View。一般使用Servlet。
     视图、模型的选择（分发）
 
-####Servlet
-    Servlet必须符合一定的规范：
-    a.必须继承javax.servlet.http.HttpServlet
-    b.重写其中的doGet( )或doPost( )方法
-    doGet( )    接收并处理所有get提交方式的请求
-    doPost( )    接收并处理所有post提交方式的请求
     
-    Servlet想要使用，必须配置
-    Servlet2.5：web.xml
-    Servlet3.0: @Servlet

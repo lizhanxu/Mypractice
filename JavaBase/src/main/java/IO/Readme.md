@@ -44,15 +44,13 @@ RandomAccessFile
      
      处理流的优势：①操作更简单 ②执行效率更高
  
-     常用处理流：过滤流(打印流、推回输入流)、缓冲流、对象流、转换流等
+     常用处理流：过滤流、打印流、缓冲流、对象流、转换流等
      
-#####过滤流(装饰器设计模式)
-
-    过滤流都是处理流
+#####过滤流
     
     过滤流是FilterInputStream、FilterOutputStream、FilterReader、FilterWriter的子类
     
-    包括打印流、推回输入流、数据流等
+    包括推回输入流、数据流等
      
 ######打印流——PrintWriter、PrintStream
 
