@@ -55,9 +55,6 @@
     Servlet 过滤器可以动态地拦截请求和响应，以变换或使用包含在请求或响应中的信息。
     Filter的执行顺序与在web.xml配置文件中filter-mapping的配置顺序一致，一般把Filter配置在所有的Servlet之前。
 ####[Servlet异常处理](https://www.runoob.com/servlet/servlet-exception-handling.html)
-####[Cookie](https://www.runoob.com/servlet/servlet-cookies-handling.html)
-    Cookie是存储在客户端计算机上的文本文件，并保留了各种跟踪信息。Java Servlet支持HTTP Cookie。
-    
 ####Servlet容器(即Web服务器)——Tomcat
 
 
