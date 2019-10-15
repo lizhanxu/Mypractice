@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--lazy-init=false在Spring启动时会立即进行实例化-->
+    <!--lazy-init=true第一次向容器通过getBean索取bean时实例化-->
+    <!--lazy-init仅在scope属性为singleton时，才会有效-->
+    <bean id="springUtils" class="Servlet.SpringUtils" lazy-init="false" />
+
+    <bean id="hello" class="Servlet.HelloBean"/>
+</beans>

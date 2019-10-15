@@ -1,4 +1,6 @@
-####Servlet（Server Applet）
+####Servlet（Server Applet）(Java Servlet)
+[详解](https://blog.csdn.net/qq_19782019/article/details/80292110)
+
     用Java编写的服务器端程序，是在服务器上运行的小程序，Servlet对Server就如同Applet对Client一样。
     一个Servlet就是Java编程语言中的一个类，它被用来扩展服务器的性能。
     
@@ -35,6 +37,7 @@
     Servlet容器（即Web服务器）调用 service()方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。
     每次服务器接收到一个Servlet请求时，服务器会产生一个新的线程并调用service()。
     service()方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。
+    在service中使用的编码解码方式默认为：ISO-8859-1编码，response缓冲区的默认编码是iso8859-1
     GET是默认的请求类型
     
     destroy()方法只会被调用一次，在Servlet生命周期结束时被调用。
@@ -42,15 +45,19 @@
     在调用destroy()方法之后，Servlet对象被标记为垃圾回收。
     
    ![](Servlet生命周期流程图.png)
+####Servlet工作流程
+   ![](Servlet工作流程.png)
 ####创建Servlet的三种方式
     ①实现Servlet接口
     ②继承GenericServlet
     ③继承HttpServlet(最常用，一般用这个)
-####Http请求和Http响应
-   ![](图解http请求.png)
-   ![](图解http响应.png)
-####Servlet 容器(即Web服务器)——Tomcat
-https://blog.csdn.net/xlgen157387/article/details/79006434
-https://blog.csdn.net/weixin_35586546/article/details/81226887
-https://blog.csdn.net/qq_19782019/article/details/80292110
-https://www.runoob.com/servlet/servlet-first-example.html
+####[Filter过滤器](https://www.runoob.com/servlet/servlet-writing-filters.html)
+    Servlet 过滤器可以动态地拦截请求和响应，以变换或使用包含在请求或响应中的信息。
+    Filter的执行顺序与在web.xml配置文件中filter-mapping的配置顺序一致，一般把Filter配置在所有的Servlet之前。
+####[Servlet异常处理](https://www.runoob.com/servlet/servlet-exception-handling.html)
+####[Cookie](https://www.runoob.com/servlet/servlet-cookies-handling.html)
+    Cookie是存储在客户端计算机上的文本文件，并保留了各种跟踪信息。Java Servlet支持HTTP Cookie。
+    
+####Servlet容器(即Web服务器)——Tomcat
+
+
