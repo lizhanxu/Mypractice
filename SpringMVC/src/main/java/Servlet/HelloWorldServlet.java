@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 /**
  * @ClassName HelloWorldServlet
@@ -21,6 +22,11 @@ public class HelloWorldServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException {
+        //parameter是客户端传过来的请求参数，不是头信息，可以是url里面的，也可以是body里面的
+        Enumeration parameterNames = req.getParameterNames();
+        while (parameterNames.hasMoreElements()) {
+            System.out.println(parameterNames.nextElement());
+        }
         // 设置响应内容类型
         resp.setContentType("text/html");//MIME类型
         // 实际的逻辑是在这里

@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * @ClassName MyServletListener
- * @Description 监听ServletContext
+ * @Description 监听ServletContext对象
  * @Date 2019/10/15
  * @Created by lizhanxu
  */
