@@ -28,7 +28,7 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:HelloWorldConfig.xml")//classpath:代表在Maven约定的资源文件夹下面(即${basedir}/src/main/resources)，注意路径一定要严格按照约定
 public class AnnotationMain {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AnnotationMain.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AnnotationMain.class);
 
         HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorldImpl");
         helloWorld.sayHelloWorld();
@@ -44,6 +44,8 @@ public class AnnotationMain {
 
         DataSourceTest dataSourceTest = context.getBean(DataSourceTest.class);
         dataSourceTest.query();
+
+        context.close();//释放资源
 
     }
 }

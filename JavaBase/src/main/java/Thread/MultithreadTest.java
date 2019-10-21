@@ -22,7 +22,7 @@ public class MultithreadTest extends Thread {
 
     public static void main(String[] args) {
         System.out.println("main start");
-        for (int i =1;i<100;i++){
+        for (int i =1;i<1000;i++){
             System.out.println(Thread.currentThread().getName()+"----->"+i);
             if (i==20){
                 new MultithreadTest().start();

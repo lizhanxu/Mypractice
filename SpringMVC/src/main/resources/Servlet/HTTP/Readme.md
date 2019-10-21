@@ -89,18 +89,25 @@
         ②为了安全，敏感信息不能放在Cookie中，虽然浏览器对Cookie有一定的保护措施
         ③不是所有的客户端都支持Cookie
         ④等等
+        
     随后出现了Session机制，将状态保存在会话(Session)中，通过Session来跟踪回话，Session保存在服务器上(通常是内存中)，
     服务器生成session_id(会话标识)给客户端，客户端请求时只需要携带一个session_id(会话标识)即可，session_id通常是放在Cookie中。
     服务器需要保存所有的session_id和Session。这对服务器来说是一笔巨大的开销，同时限制服务器的扩展，多台服务器要同步session_id和Session。
     为了解决这一问题，解决方案有：
         ①session sticky(用户访问指定的服务器，仅在这个服务器挂掉之后才请求到其他服务器，这时session仍然丢失)
         ②Memcached(专门做一个Session服务器来跟踪回话，这个服务器挂了，所有session丢失)
+    如果浏览器禁用或不支持Cookie，可以通过URL重写的方式将session_id发送到服务器。
+    
+    为了解决多服务器、节省服务器空间、不支持Cookie等问题，出现了Token机制，将用户信息保存在Token中，服务器通过验证签名来判断是不是自己颁发的令牌。
+    这样服务器不需要存储id通过比对来进行判断，而是通过算法计算签名，比对签名来进行判断
+    Token一般要加密
 ####[Cookie与Session](https://blog.csdn.net/fangaoxin/article/details/6952954)
     HTTP协议是无状态的协议。一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接。这就意味着服务器无法从连接上跟踪会话。
     Cookie和Session是状态机制
 #####Cookie
     Cookie存储在客户端
     Cookie机制用来弥补Http协议无状态的不足，在Seesion出来之前，基本上所有的网站都采用Cookie来跟踪会话。
+    
     基于Cookie身份验证工作原理：给客户端们颁发一个通行证，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。
     
     Cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。
@@ -140,4 +147,15 @@
     绝大多数的手机浏览器都不支持Cookie。
     URL地址重写是对客户端不支持Cookie的解决方案。将该用户session_id信息重写到URL地址中，从而跟踪会话。
 #### token(令牌)机制
-    tokens 是多用户下处理认证的最佳方式。
+    主要用于身份验证
+    时间换空间：用CPU的计算时间换取存储空间
+    无状态，即服务器不需要存储标识
+    
+    一种简单的token组成：UID(用户的唯一身份标识)、time(当前时间戳)、sign(签名，通过算法生成)
+    以设备mac地址作为token
+    以sessionid作为token
+    
+    流程：客户端第一次请求时，服务器颁发token，之后每次客户端请求只需要携带token即可，服务器验证token
+    验证token：取token中的某些信息，通过算法计算出签名，和token中携带的签名进行比对
+    
+    token存储在客户端，为了避免查询时间过长导致token过时，一般存储在内存中。也可存储在cookie或者本地存储中

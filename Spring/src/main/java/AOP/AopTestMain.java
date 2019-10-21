@@ -11,10 +11,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class AopTestMain {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AOPConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AOPConfig.class);
         DemoAnnotationService demoAnnotationService = context.getBean(DemoAnnotationService.class);
         demoAnnotationService.add();
         DemoMethodService demoMethodService = context.getBean(DemoMethodService.class);
         demoMethodService.add();
+        context.close();//释放资源，养成良好的习惯
     }
 }

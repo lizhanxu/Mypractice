@@ -1,6 +1,6 @@
 ####Bean的初始化和销毁
     Java配置方式：使用@Bean的initMethod和destroyMethod(相当于xml配置的init-method和destory-method)
-    注解方式：利用JSR-250的@PostConstruct和@PreDestroy
+    注解方式：利用JSR-250的@PostConstruct(构造函数执行完之后执行，等同initMethod)和@PreDestroy(Bean销毁之前执行，等同destroyMethod)
 
 #####@Bean
     大部分开发中都需要引入第三方jar包，往往并没有这些包的源码，这时不能使用@Component注解。
