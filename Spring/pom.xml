@@ -20,6 +20,7 @@
             <artifactId>spring-context</artifactId>
             <!--其他信息从父pom继承-->
         </dependency>
+
         <!--引入其他模块-->
         <dependency>
             <groupId>com.lizhanxu.mypractice</groupId>
@@ -28,25 +29,36 @@
             <!--scope默认值为compile-->
             <scope>compile</scope>
         </dependency>
+
+        <!--引入c3p0数据源-->
+        <!--<dependency>-->
+        <!--<groupId>c3p0</groupId>-->
+        <!--<artifactId>c3p0</artifactId>-->
+        <!--<version>0.9.1.2</version>-->
+        <!--</dependency>-->
+
         <!--引入dbcp-->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
+
         <!--AOP注解支持-->
         <dependency>
             <groupId>aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
             <version>1.5.3</version>
         </dependency>
+
         <!--对事务的支持-->
         <!--例如使用@Transactional-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-tx</artifactId>-->
-            <!--<version>5.1.8.RELEASE</version>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-tx</artifactId>-->
+        <!--<version>5.1.8.RELEASE</version>-->
         <!--</dependency>-->
+
         <!--对切面自动生成代理(即织入)的支持-->
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -54,12 +66,19 @@
             <version>1.8.13</version>
         </dependency>
 
-        <!--引入c3p0数据源-->
-        <!--<dependency>-->
-            <!--<groupId>c3p0</groupId>-->
-            <!--<artifactId>c3p0</artifactId>-->
-            <!--<version>0.9.1.2</version>-->
-        <!--</dependency>-->
+        <!--集成测试-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+        <!--单元测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+
     </dependencies>
 
 
