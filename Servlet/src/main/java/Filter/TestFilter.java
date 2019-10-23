@@ -1,10 +1,10 @@
-package Servlet;
+package Filter;
 
 import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * @ClassName TestFilter
+ * @ClassName Filter.TestFilter
  * @Description
  * @Date 2019/10/15
  * @Created by lizhanxu

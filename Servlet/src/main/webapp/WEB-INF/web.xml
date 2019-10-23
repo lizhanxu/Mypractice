@@ -1,0 +1,100 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<!--<web-app>的子标签是有顺序的，必须遵守顺序-->
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!--Spring根据这个地址来创建WebApplicationContext-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+
+  <!--定义Filter-->
+  <filter>
+    <filter-name>testFilter</filter-name>
+    <filter-class>Filter.TestFilter</filter-class>
+    <!--为Filter指定初始化参数-->
+    <init-param>
+      <param-name>Site</param-name>
+      <param-value>www.lizhanxu.me</param-value>
+    </init-param>
+  </filter>
+
+  <!--映射Filter-->
+  <filter-mapping>
+    <filter-name>testFilter</filter-name>
+    <!--映射Filter拦截指定URL，/*表示所有URL,/表示一个URL-->
+    <url-pattern>/*</url-pattern>
+    <!--映射Filter拦截指定Servlet-->
+    <!--<servlet-name>helloWorldServlet</servlet-name>-->
+  </filter-mapping>
+
+  <!--定义Listener-->
+  <!--Spring中的Servlet监听器，监听ServletContext对象，在ServletContext对象创建时利用该对象创建WebApplicationContext-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!--自定义的监听器，需要实现ServletContextListener接口即可-->
+  <listener>
+    <listener-class>Listener.MyServletListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>Listener.MyRequestListener</listener-class>
+  </listener>
+
+  <!--定义Servlet-->
+  <servlet>
+    <servlet-name>helloWorldServlet</servlet-name>
+    <servlet-class>Servlet.HelloWorldServlet</servlet-class>
+    <!--当值为0或者大于0时，表示容器在应用启动时就加载这个servlet
+        当是一个负数时或者没有指定时，则指示容器在该servlet被选择时才加载
+        非负数的值越小，启动该servlet的优先级越高
+    -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>errorHandler</servlet-name>
+    <servlet-class>Servlet.ErrorHandler</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+
+  <!--将Servlet映射到指定URL-->
+  <servlet-mapping>
+    <servlet-name>helloWorldServlet</servlet-name>
+    <url-pattern>/HelloWorld</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>errorHandler</servlet-name>
+    <url-pattern>/ErrorHandler</url-pattern>
+  </servlet-mapping>
+
+  <!-- error-code 相关的错误页面 -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/ErrorHandler</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/ErrorHandler</location>
+  </error-page>
+
+  <!-- exception-type 相关的错误页面 -->
+  <error-page>
+    <exception-type>
+      javax.servlet.ServletException
+    </exception-type >
+    <location>/ErrorHandler</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.io.IOException</exception-type >
+    <location>/ErrorHandler</location>
+  </error-page>
+
+  <!--通用的异常处理程序-->
+  <!--<error-page>-->
+  <!--<exception-type>java.lang.Throwable</exception-type >-->
+  <!--<location>/Readme.ErrorHandler</location>-->
+  <!--</error-page>-->
+</web-app>

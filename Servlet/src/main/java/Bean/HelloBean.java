@@ -1,7 +1,7 @@
-package Servlet;
+package Bean;
 
 /**
- * @ClassName Servlet.HelloBean
+ * @ClassName Readme.Bean.HelloBean
  * @Description
  * @Date 2019/10/15
  * @Created by lizhanxu

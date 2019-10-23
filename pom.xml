@@ -22,6 +22,8 @@
         <module>Netty</module>
         <module>Mybatis</module>
         <module>SpringMVC</module>
+        <module>Servlet</module>
+        <module>Servlet</module>
     </modules>
 
     <!--定义变量的值-->

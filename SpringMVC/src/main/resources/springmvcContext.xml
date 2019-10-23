@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/cache"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启SpringMVC的注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!--扫描包-->
+    <context:component-scan base-package="java"/>
+
+    <!-- 配置映射处理器：根据bean(自定义Controller)的name属性的url去寻找handler；spring mvc默认的映射处理器是BeanNameUrlHandlerMapping-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+
+    <!-- 配置处理器适配器来执行Controller ,spring mvc默认的是SimpleControllerHandlerAdapter-->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+    <!-- 配置spring mvc视图解析器：解析逻辑视图；
+		 后台返回逻辑视图：index
+		 视图解析器解析出真正物理视图：前缀+逻辑视图+后缀     例如：/webapp/index.jsp
+	-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/webapp"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>

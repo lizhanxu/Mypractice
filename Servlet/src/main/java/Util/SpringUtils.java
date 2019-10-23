@@ -1,4 +1,4 @@
-package Servlet;
+package Util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 import java.util.Map;
 
 /**
- * @ClassName Servlet.SpringUtils
+ * @ClassName Readme.Util.SpringUtils
  * @Description
  * @Date 2019/10/15
  * @Created by lizhanxu
