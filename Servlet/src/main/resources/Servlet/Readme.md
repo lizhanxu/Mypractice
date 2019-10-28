@@ -76,5 +76,8 @@
     “状态”，可以理解为某个时刻的ServletContext代表了这个应用在某个时刻的“一张快照”，这张“快照”里面包
     含了有关应用的许多信息，应用的所有组件都可以从ServletContext获取当前应用的状态信息。ServletContext随着程序
     的启动而创建，随着程序的停止而销毁。
-
+####Servlet3.0
+    基于注解
+    允许动态加载Servlet，需实现ServletContainerInitializer接口
+    允许不使用web.xml
 

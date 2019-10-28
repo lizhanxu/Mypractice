@@ -21,7 +21,7 @@
 		 视图解析器解析出真正物理视图：前缀+逻辑视图+后缀     例如：/webapp/index.jsp
 	-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/webapp"/>
+        <property name="prefix" value="/webapp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 

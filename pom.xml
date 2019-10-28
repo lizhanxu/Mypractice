@@ -24,6 +24,8 @@
         <module>SpringMVC</module>
         <module>Servlet</module>
         <module>Servlet</module>
+        <module>SpringMVC_2</module>
+        <module>SpringMVC_2</module>
     </modules>
 
     <!--定义变量的值-->

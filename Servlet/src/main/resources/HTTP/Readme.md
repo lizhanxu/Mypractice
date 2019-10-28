@@ -1,8 +1,14 @@
 ####HTTP
     HTTP是一个无状态的面向连接的协议
-####URL
-    URL全称是统一资源定位符
-    Url的编码格式采用的是ASCII码，所有非ASCII字符均需要编码再传输
+####URL、URI、URN
+    URL  统一资源定位符
+    URL的编码格式采用的是ASCII码，所有非ASCII字符均需要编码再传输
+    
+    URI  统一资源标识符
+    
+    URN  统一资源名称
+    
+    URI是包含URL、URN，即URL、URN是URI的子集
 ####Http请求和Http响应
     Http请求
     <request line>

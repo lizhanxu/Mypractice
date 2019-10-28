@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 import java.util.Map;
 
 /**
- * @ClassName Readme.Util.SpringUtils
+ * @ClassName SpringUtils
  * @Description
  * @Date 2019/10/15
  * @Created by lizhanxu
