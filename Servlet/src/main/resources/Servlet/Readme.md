@@ -80,4 +80,22 @@
     基于注解
     允许动态加载Servlet，需实现ServletContainerInitializer接口
     允许不使用web.xml
-
+####request的parameter和attribute
+    parameter是客户端传过来的请求参数，不是头信息，可以是url里面的，也可以是body里面的
+    attribute是request对象的内部属性(域)，是每个request独有的，用于服务器端内部组件(servlet、jsp等)的传值，对attribute的操作是服务器的行为
+####请求转发和请求重定向
+    请求转发是服务器去调用另外一个web资源
+    重定向是浏览器去访问另外一个web资源
+####HttpServletRequest和HttpServletResponse
+#####HttpServletRequest
+    封装了Http请求内容(请求行、请求头、请求体)
+    1.获取客户机信息
+    2.获取请求行、请求头
+    3.获取请求参数、请求体
+    4.请求转发(forward)/包含(include)
+    5.请求域 Attribute
+#####HttpServletResponse
+    1.设置响应头
+    2.设置响应状态码
+    3.写响应正文
+    4.重定向

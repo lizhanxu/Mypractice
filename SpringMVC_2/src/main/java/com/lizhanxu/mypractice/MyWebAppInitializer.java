@@ -11,7 +11,8 @@ import javax.servlet.ServletRegistration;
 
 /**
  * @ClassName MyWebAppInitializer
- * @Description  依赖servlet包
+ * @Description  该类替代了web.xml
+ *               依赖servlet包
  *               两种方式：
  *               ①继承AbstractAnnotationConfigDispatcherServletInitializer
  *               ②或者实现WebApplicationInitializer接口重载onStartup方法

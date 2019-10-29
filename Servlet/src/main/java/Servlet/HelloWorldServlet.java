@@ -25,7 +25,16 @@ public class HelloWorldServlet extends HttpServlet {
         //parameter是客户端传过来的请求参数，不是头信息，可以是url里面的，也可以是body里面的
         Enumeration parameterNames = req.getParameterNames();
         while (parameterNames.hasMoreElements()) {
-            System.out.println(parameterNames.nextElement());
+            String parameterName = (String) parameterNames.nextElement();
+            System.out.println(parameterName);
+            System.out.println(req.getParameter(parameterName));
+        }
+        //attribute是request对象的内部属性，是每个request独有的，用于服务器端内部组件(servlet、jsp等)的传值
+        Enumeration attributeNames = req.getAttributeNames();
+        while (attributeNames.hasMoreElements()) {
+            String attibuteName = (String) attributeNames.nextElement();
+            System.out.println(attibuteName);
+            System.out.println(req.getAttribute(attibuteName));
         }
         // 设置响应内容类型
         resp.setContentType("text/html");//MIME类型

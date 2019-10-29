@@ -1,6 +1,6 @@
-package com.lizhanxu.mypractice;
+package com.lizhanxu.mypractice.Controller;
 
-import com.fasterxml.jackson.databind.Module;
+import com.lizhanxu.mypractice.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +21,16 @@ import javax.servlet.http.HttpServletRequest;
 //@RequestMapping("/my")//指定对应URL
 public class MyFirstController {
 
-    @RequestMapping("/my/home")//指定对应URL
+    /**
+     *
+     * @return 返回字符串会被当做逻辑视图被视图解析器解析
+     */
+    @RequestMapping("homepage")
+    public String goto_home() {
+        return "index";
+    }
+
+    @RequestMapping("/my/home")//指定对应URL       第一个"/"有没有效果完全一样，在请求的url中，同一处的"/"1个或多个没影响
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView();//模型和视图
         mv.setViewName("index");//视图的逻辑名称
@@ -69,7 +78,8 @@ public class MyFirstController {
         User user = new User();
         user.setId(id);
         ModelAndView mv = new ModelAndView();
-        //给数据模型添加对象
+
+        //添加数据模型
         mv.addObject("user", user);
 
         //设置视图，非逻辑视图不会被视图解析器解析，SpringMvc的默认视图为JstlView

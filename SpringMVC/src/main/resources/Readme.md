@@ -38,9 +38,9 @@
     
     部分组件介绍：
     处理器映射：SpringMVC初始化时，通过注解(@Controller、@RequestMapping)解析生成HandlerMapping(处理器映射)
-    处理器执行链：SpringMVC会给处理器加入拦截器，在处理器执行前后加入代码，构成处理器的执行链(HandlerExecutionChain)
+    处理器执行链：SpringMVC会给处理器加入拦截器，在处理器执行前后加入代码，构成处理器的执行链(HandlerExecutionChain)-------责任链模式
     处理器适配器:因为处理器执行链会在不同的上下文中运行，通过上下文找到适配器，用来运行处理器执行链。适配器的实例在DispatcherServlet初始化的时候创建
-    视图解析器：非逻辑视图没有视图解析器解析
+    视图解析器：非逻辑视图不会被视图解析器解析
     
     流程分析：
     请求由DispatcherServlet接收处理
