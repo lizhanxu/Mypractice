@@ -25,8 +25,16 @@ public class LogAspect {
 
     }
 
+    @Before("annotationPointCut()")
+    public void before1(JoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        Action action = method.getAnnotation(Action.class);
+        System.out.println("前置通知   "+action.name());
+    }
+
     @After("annotationPointCut()")
-    public void after(JoinPoint joinPoint) {
+    public void after1(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         Action action = method.getAnnotation(Action.class);
@@ -34,7 +42,7 @@ public class LogAspect {
     }
 
     @Before("execution(* AOP.DemoMethodService.*(..))")//注意第一个*后面跟空格
-    public void before(JoinPoint joinPoint) {
+    public void before2(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         System.out.println("前置通知   方法规则式拦截"+method.getName()+"方法");

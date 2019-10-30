@@ -89,8 +89,8 @@ public class ParamsController {
     }
 
     /**
-     * 传递自定义对象    Json格式
-     * 注解@RequestBody用来接收请求体中的内容
+     * 传递自定义对象
+     * 注解@RequestBody用来读取请求体中的数据
      * @param userVo
      * @return
      */
@@ -108,9 +108,9 @@ public class ParamsController {
     }
 
     @RequestMapping("/getUser")
-    @ResponseBody//表示返回值为响应体中的内容
-    public User getUser(@RequestBody User user) {
-        return user;
+    @ResponseBody//将返回值写入到响应体的数据区
+    public String getUser(@RequestBody User user) {
+        return user.getName();
     }
 
 

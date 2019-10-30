@@ -1,12 +1,14 @@
 package com.lizhanxu.mypractice.controller;
 
 import com.lizhanxu.mypractice.pojo.Transaction;
+import com.lizhanxu.mypractice.validator.ValidateString;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -59,12 +61,27 @@ public class ValidateController {
     }
 
     /**
-     * 没有接收Errors，验证到不符合要求的信息会抛出异常 BindException
-     * @param trans
+     * hibernate-validator校验框架只支持对Bean的校验，对诸如String,int之类的单个参数的校验是不起作用的，需要自己去实现校验AOP
+     *
+     * 自定义了StringValidator去校验
+     * @param msg
      * @return
      */
     @RequestMapping("/annotation4")
-    public String annotationValidate4(@Valid Transaction trans) {
+    @ResponseBody
+    @ValidateString//自己实现的@NotNull验证
+    public String annotationValidate4(@Validated @NotNull(message = "id不能为空") String id,
+                                      @Validated @NotNull(message = "msg不能为空") String msg) {
+        return id + ":" + msg;
+    }
+
+    /**
+     * 校验不通过，错误信息就会封装到Errors对象，如果不加Errors会抛出异常 BindException
+     * @param trans
+     * @return
+     */
+    @RequestMapping("/annotation5")
+    public String annotationValidate5(@Valid Transaction trans) {
         return "index";
     }
 

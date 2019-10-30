@@ -4,6 +4,7 @@ import com.lizhanxu.mypractice.interceptor.MyInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan("com.lizhanxu.mypractice")
 @EnableWebMvc//启用SpringWebMvc
+@EnableAspectJAutoProxy//提供织入支持
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean  //忘记注入视图解析器了。。。。。。
