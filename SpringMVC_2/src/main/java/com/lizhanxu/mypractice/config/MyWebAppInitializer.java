@@ -1,9 +1,9 @@
-package com.lizhanxu.mypractice;
+package com.lizhanxu.mypractice.config;
 
+import com.lizhanxu.mypractice.config.WebConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

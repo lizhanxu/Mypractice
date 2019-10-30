@@ -14,28 +14,35 @@ import static org.junit.Assert.*;
  */
 public class CalculateAutoTest {
 
+    private Calculate calculate;
+
     @Before
     public void setUp() throws Exception {
+        calculate = new Calculate();
     }
 
     @After
     public void tearDown() throws Exception {
+        calculate = null;
     }
 
     @Test
     public void add() {
-        fail("Not yet implemented");
+        assertEquals(8,calculate.add(3,5));
     }
 
     @Test
     public void subtract() {
+        assertEquals(7,calculate.subtract(10,3));
     }
 
     @Test
     public void multiply() {
+        assertEquals(30,calculate.multiply(5,6));
     }
 
     @Test
     public void divide() {
+        assertEquals(3,calculate.divide(6,2));
     }
 }

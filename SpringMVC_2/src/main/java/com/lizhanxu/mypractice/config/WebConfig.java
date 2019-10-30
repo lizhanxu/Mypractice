@@ -1,6 +1,6 @@
-package com.lizhanxu.mypractice;
+package com.lizhanxu.mypractice.config;
 
-import com.lizhanxu.mypractice.Interceptor.MyInterceptor;
+import com.lizhanxu.mypractice.interceptor.MyInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

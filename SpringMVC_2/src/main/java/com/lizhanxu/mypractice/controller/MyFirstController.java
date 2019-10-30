@@ -1,4 +1,4 @@
-package com.lizhanxu.mypractice.Controller;
+package com.lizhanxu.mypractice.controller;
 
 import com.lizhanxu.mypractice.pojo.User;
 import org.springframework.stereotype.Controller;

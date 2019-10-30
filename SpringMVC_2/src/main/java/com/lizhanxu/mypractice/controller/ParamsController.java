@@ -1,13 +1,10 @@
-package com.lizhanxu.mypractice.Controller;
+package com.lizhanxu.mypractice.controller;
 
 import com.lizhanxu.mypractice.pojo.User;
 import com.lizhanxu.mypractice.pojo.UserVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -92,8 +89,8 @@ public class ParamsController {
     }
 
     /**
-     * 传递JSON参数
-     * 注解@RequestBody用来接收JSON参数
+     * 传递自定义对象    Json格式
+     * 注解@RequestBody用来接收请求体中的内容
      * @param userVo
      * @return
      */
@@ -110,6 +107,11 @@ public class ParamsController {
         return mv;
     }
 
+    @RequestMapping("/getUser")
+    @ResponseBody//表示返回值为响应体中的内容
+    public User getUser(@RequestBody User user) {
+        return user;
+    }
 
 
     /**
@@ -170,6 +172,7 @@ public class ParamsController {
     @RequestMapping("redirectGetUserJson")
     public String redirectGetUserJson(RedirectAttributes ra, User user) {
         System.out.println(user);
+        //绑定重定向数据模型
         ra.addFlashAttribute("user", user);//使用该方法后，SpringMVC会将数据保存到Session中，重定向后会从Session中读取数据并清除
         return "redirect:./commonParamPojo";
     }

@@ -44,11 +44,14 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!--Spring框架-->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${springframework.version}</version>
             </dependency>
+
             <!--Spring MVC-->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -56,10 +59,11 @@
                 <version>${springframework.version}</version>
             </dependency>
 
-            <!--集成测试-->
+            <!--Spring提供的集成测试-->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
+                <scope>test</scope>
                 <version>${springframework.version}</version>
             </dependency>
 
@@ -70,6 +74,7 @@
                 <version>4.12</version>
                 <scope>test</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

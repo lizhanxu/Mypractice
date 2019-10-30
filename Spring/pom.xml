@@ -12,6 +12,7 @@
     <artifactId>Spring</artifactId>
 
     <dependencies>
+
         <!--引入spring framework-->
         <!--包和包之间也有依赖关系，添加一个依赖会下载这个依赖以及这个依赖所需要的包-->
         <!--context依赖于aop、beans、core、expression、jcl-->
@@ -77,12 +78,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
 
     </dependencies>
 
