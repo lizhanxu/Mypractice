@@ -62,11 +62,8 @@
     方法参数注释
     该方法参数从model获取
     
-    
-HandlerExceptionResolver
-
-@ExceptionHandler
-
-https://blog.csdn.net/eson_15/article/details/51725470
-
-https://blog.csdn.net/KingBoyWorld/article/details/78934841
+####几个关键词
+    参数分组校验
+    自定义消息转换器HttpMessageConverter
+    自定义属性编辑器CustomEditor对请求参数进行转换    @initBinder
+    SpringMVC文件上传和下载
