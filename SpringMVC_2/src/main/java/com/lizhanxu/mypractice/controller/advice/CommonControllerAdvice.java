@@ -22,6 +22,8 @@ public class CommonControllerAdvice {
      *
      * 转换请求参数中的日期字符串为Date类型，SpringMVC默认不支持这个格式的转换
      *
+     * 可以自定义属性编辑器
+     *
      * @param binder   WebDataBinder是用来绑定请求参数到指定的属性编辑器
      */
     @InitBinder
