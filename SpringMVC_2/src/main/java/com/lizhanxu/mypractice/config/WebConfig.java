@@ -5,11 +5,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.nio.charset.Charset;
+import java.util.List;
 
 /**
  * @ClassName WebConfig
@@ -27,11 +32,25 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean  //忘记注入视图解析器了。。。。。。
     public ViewResolver initViewResolver() {
+        //InternalResourceView是逻辑视图
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/classes/");//编译后的路径，target下的路径
         viewResolver.setSuffix(".jsp");
-//        viewResolver.setViewClass(JstlView.class);//需要引入jstl包，要用到javax.servlet.jsp.jstl.core.Config     SpringMvc的默认视图为JstlView
+//        viewResolver.setViewClass(JstlView.class);//需要引入jstl包，要用到javax.servlet.jsp.jstl.core.Config     JstlView视图主要为JSP的渲染而服务
         return viewResolver;
+    }
+
+    /**
+     * 添加HttpMessageConverter
+     * 解决中文字符乱码的问题
+     * SpringMVC默认注入的StringHttpMessageConverter是ISO_8859_1，且该默认字符集为final，不能更改，因此需要添加一个新的StringHttpMessageConverter用来解析中文
+     * public static final Charset DEFAULT_CHARSET = StandardCharsets.ISO_8859_1;
+     * @param converters
+     */
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        StringHttpMessageConverter messageConverter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        converters.add(messageConverter);
     }
 
     //添加拦截器

@@ -28,6 +28,7 @@
 ### Spring MVC
 
     Spring MVC是表现层框架
+    Spring MVC是消息传递和处理框架
     Spring MVC是一种基于Servlet的技术
     Spring MVC将传统的模型层拆分为业务层(Service)和数据访问层(DAO)
     在Spring MVC中可以使用各种视图
@@ -37,15 +38,16 @@
    ![](SpringMVC组件与流程.png)
     
     部分组件介绍：
-    处理器映射：SpringMVC初始化时，通过注解(@Controller、@RequestMapping)解析生成HandlerMapping(处理器映射)
-    处理器执行链：SpringMVC会给处理器加入拦截器，在处理器执行前后加入代码，构成处理器的执行链(HandlerExecutionChain)-------责任链模式
-    处理器适配器:因为处理器执行链会在不同的上下文中运行，通过上下文找到适配器，用来运行处理器执行链。适配器的实例在DispatcherServlet初始化的时候创建
-    视图解析器：非逻辑视图不会被视图解析器解析
+    处理器映射(HandlerMapping)：SpringMVC初始化时，通过注解(@Controller、@RequestMapping)解析生成处理器映射
+    处理器执行链(HandlerExecutionChain)：SpringMVC会给处理器加入拦截器，在处理器执行前后加入代码，构成处理器的执行链-------责任链模式
+    处理器适配器(HandlerAdapter):因为处理器执行链会在不同的上下文中运行，通过上下文找到适配器，用来运行处理器执行链。适配器的实例在DispatcherServlet初始化的时候创建
+    视图解析器(ViewResolver)：非逻辑视图不会被视图解析器解析
     
     流程分析：
     请求由DispatcherServlet接收处理
     DispatcherServlet根据URL在HandlerMapping中找到对应的处理器，生成处理器的执行链
     DispatcherServlet再将该执行链拿到适配器(Adapter)去执行，返回视图(逻辑视图)
     DispatcherServlet将视图拿给视图解析器解析，返回解析结果
-
-​    
+    
+### 处理器(Handler)和控制器(Controller)
+    处理器是在控制器功能的基础上加上了一层包装，在HTTP请求到达控制器之前对请求进行处理

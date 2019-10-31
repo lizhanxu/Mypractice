@@ -33,7 +33,7 @@ public class ValidateController {
     @RequestMapping("/annotation1")
     public String annotationValidate1(@Valid Transaction trans, Errors errors) {
         printErrors(errors);
-        return "index";
+        return "index";//由视图解析器生成对应视图
     }
 
     /**
