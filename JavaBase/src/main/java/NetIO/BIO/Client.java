@@ -22,14 +22,14 @@ public class Client {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));//Socket的输入流，用以获取客户端传过来的数据
             PrintWriter out = new PrintWriter(socket.getOutputStream());//Socket的输出流，用以向客户端传输数据
             out.println("客户端请求： 服务器你好   "+System.currentTimeMillis());
-//            String content = null;
-//            while (true) {
-//                content = in.readLine();
-//                if (content == null) {
-//                    break;
-//                }
-//                System.out.println(content);
-//            }
+            String content = null;
+            while (true) {
+                content = in.readLine();
+                if (content == null) {
+                    break;
+                }
+                System.out.println(content);
+            }
             out.close();
             in.close();
         } catch (IOException e) {
