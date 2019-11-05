@@ -17,24 +17,34 @@ public class Client {
     public static void main(String[] args) {
         System.out.println("Client Start ...");
         Socket socket = null;
+        BufferedReader in = null;
+        PrintWriter out = null;
         try {
             socket = new Socket("127.0.0.1", 8080);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));//Socket的输入流，用以获取客户端传过来的数据
-            PrintWriter out = new PrintWriter(socket.getOutputStream());//Socket的输出流，用以向客户端传输数据
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));//Socket的输入流，用以获取客户端传过来的数据
+            out = new PrintWriter(socket.getOutputStream());//Socket的输出流，用以向客户端传输数据
             out.println("客户端请求： 服务器你好   "+System.currentTimeMillis());
             String content = null;
             while (true) {
-                content = in.readLine();
+                content = in.readLine();//没有数据来会一直阻塞在这里。读到数据的情况下，读到最后才返回null
                 if (content == null) {
                     break;
                 }
                 System.out.println(content);
             }
-            out.close();
-            in.close();
         } catch (IOException e) {
             System.err.println("客户端异常："+e.getMessage());
         }finally {//关闭资源
+            if (out != null) {
+                out.close();
+            }
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             if (socket != null) {
                 try {
                     socket.close();

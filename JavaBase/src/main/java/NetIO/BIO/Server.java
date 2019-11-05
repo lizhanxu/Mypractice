@@ -10,13 +10,13 @@ import java.util.Date;
 
 /**
  * @ClassName Server
- * @Description  基于BIO的Server
+ * @Description 基于BIO的Server
  * @Date 2019/11/1
  * @Created by lizhanxu
  */
 public class Server {
     //监听的端口号
-    private static final int port= 8080;
+    private static final int port = 8080;
 
     public static void main(String[] args) {
         try {
@@ -27,13 +27,15 @@ public class Server {
                 new Thread(new ServerHandler(client)).start();//每一个Socket请求创建一个线程去处理
             }
         } catch (IOException e) {
-            System.err.println("服务器异常："+e.getMessage());
+            System.err.println("服务器异常：" + e.getMessage());
         }
     }
 
     private static class ServerHandler implements Runnable {
         //当前线程所处理的Socket
         private Socket socket;
+        private BufferedReader in = null;
+        private PrintWriter out = null;
 
         public ServerHandler(Socket socket) {
             this.socket = socket;
@@ -43,7 +45,7 @@ public class Server {
         public void run() {
             try {
                 //Socket的输入流，用以获取客户端传过来的数据
-                BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+                in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
                 String content = null;
                 while (true) {//读取客户端传过来的数据
                     content = in.readLine();//读取一行
@@ -53,14 +55,21 @@ public class Server {
                     System.out.println(content);
                 }
                 //Socket的输出流，用以向客户端传输数据
-                PrintWriter out = new PrintWriter(this.socket.getOutputStream());
-                out.println("建立连接");
-                out.println("服务器返回当前时间为："+new Date());//向客户端返回当前时间
-                out.close();
-                in.close();
+                out = new PrintWriter(this.socket.getOutputStream());
+                out.println("服务器响应   " + new Date());
             } catch (IOException e) {
-                System.err.println("服务器异常："+e.getMessage());
+                System.err.println("服务器异常：" + e.getMessage());
             } finally {
+                if (out != null) {
+                    out.close();
+                }
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 if (socket != null) {
                     try {
                         socket.close();
