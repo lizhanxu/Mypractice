@@ -44,17 +44,8 @@ public class Server {
         @Override
         public void run() {
             try {
-                //Socket的输入流，用以获取客户端传过来的数据
-                in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-                String content = null;
-                while (true) {//读取客户端传过来的数据
-                    content = in.readLine();//读取一行
-                    if (content == null) {
-                        break;
-                    }
-                    System.out.println(content);
-                }
-                //Socket的输出流，用以向客户端传输数据
+//                in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+//                System.out.println(in.readLine());
                 out = new PrintWriter(this.socket.getOutputStream());
                 out.println("服务器响应   " + new Date());
             } catch (IOException e) {
