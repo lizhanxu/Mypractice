@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * @ClassName Server
@@ -44,15 +45,16 @@ public class Server {
         @Override
         public void run() {
             try {
-//                in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-//                System.out.println(in.readLine());
+                in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+                System.out.println(in.readLine());
                 out = new PrintWriter(this.socket.getOutputStream());
                 out.println("服务器响应   " + new Date());
             } catch (IOException e) {
-                System.err.println("服务器异常：" + e.getMessage());
+                System.err.println("服务器异常： " + e.getMessage());
             } finally {
                 if (out != null) {
                     out.close();
+                    out = null;
                 }
                 if (in != null) {
                     try {
@@ -60,14 +62,15 @@ public class Server {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    in = null;
                 }
                 if (socket != null) {
                     try {
                         socket.close();
                     } catch (Exception e) {
-                        socket = null;
                         System.out.println("服务端 finally 异常:" + e.getMessage());
                     }
+                    socket = null;
                 }
             }
         }
