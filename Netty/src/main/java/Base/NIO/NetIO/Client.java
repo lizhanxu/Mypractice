@@ -112,6 +112,8 @@ public class Client {
                         readBuffer.get(bytes);
                         String body = new String(bytes, "UTF-8");
                         System.out.println("Now Body is :" + body);
+
+                        doWrite(socketChannel);
                     } else if (readBytes < 0) {//-1说明服务器的数据发送完毕，并且   主动的close socket
                         key.cancel();
                         socketChannel.close();
