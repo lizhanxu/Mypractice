@@ -111,7 +111,7 @@ public class Server {
                 //处理新接入的请求消息
                 if (key.isAcceptable()) {//对Accept事件是否就绪，是否监听到Accept事件      Accept 接收到来自客户端的Socket请求
                     ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
-                    SocketChannel sc = ssc.accept();//相当于三次握手，建立物理连接，得到这个连接的SocketChannel
+                    SocketChannel sc = ssc.accept();//相当于三次握手，建立物理连接，得到这个连接的SocketChannel      非阻塞模式下，失败会直接返回null不会阻塞等待
                     sc.configureBlocking(false);
                     sc.register(selector, SelectionKey.OP_READ);//将与该客户端的SocketChannel注册到多路复用器上，监听该channel上的读操作
                 }

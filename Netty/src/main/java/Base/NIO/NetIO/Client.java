@@ -113,7 +113,7 @@ public class Client {
                         String body = new String(bytes, "UTF-8");
                         System.out.println("Now Body is :" + body);
 
-                        doWrite(socketChannel);
+                        doWrite(socketChannel);//向服务器发送数据
                     } else if (readBytes < 0) {//-1说明服务器的数据发送完毕，并且   主动的close socket
                         key.cancel();
                         socketChannel.close();
@@ -123,7 +123,7 @@ public class Client {
         }
         private void doConnect() throws IOException {
             //connect方法，连接建立则返回true
-            //如果Channel是非阻塞模式，则返回false，真正的连接建立由finishConnect()完成
+            //如果Channel是非阻塞模式，则返回false，真正的连接建立由finishConnect()完成      异步建立连接
             if (socketChannel.connect(new InetSocketAddress(host, port))) {
                 socketChannel.register(selector, SelectionKey.OP_READ);//开启监听READ事件
                 doWrite(socketChannel);//向服务器发送数据
