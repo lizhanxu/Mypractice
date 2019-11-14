@@ -1,4 +1,4 @@
-package Base.AIO.handler;
+package Base.AIO.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -58,12 +58,15 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
         ByteBuffer writeBuffer = ByteBuffer.allocate(resp.length);
         writeBuffer.put(resp);
         writeBuffer.flip();
-        channel.write(writeBuffer, writeBuffer, new CompletionHandler<Integer, ByteBuffer>() {
+        channel.write(writeBuffer, writeBuffer, new CompletionHandler<Integer, ByteBuffer>() {//异步写
             @Override
             public void completed(Integer result, ByteBuffer attachment) {
                 //如果没有发送完，继续发送
                 if (attachment.hasRemaining()) {
-                    channel.write(attachment, attachment, this);
+                    channel.write(attachment, attachment, this);//异步写
+                } else {//写完继续读
+                    ByteBuffer buffer = ByteBuffer.allocate(1024);
+                    channel.read(buffer, buffer, new ReadCompletionHandler(channel));//异步读取
                 }
             }
 

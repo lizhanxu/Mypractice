@@ -1,6 +1,4 @@
-package Base.AIO;
-
-import Base.AIO.handler.AsyncServerHandler;
+package Base.AIO.server;
 
 /**
  * @ClassName Server
@@ -13,6 +11,7 @@ public class Server {
 
     public static void main(String[] args) {
         AsyncServerHandler server = new AsyncServerHandler(port);
+        //启动服务端处理线程
         new Thread(server,"AIO-AsyncServerHandler-001").start();
     }
 }

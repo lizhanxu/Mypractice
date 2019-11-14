@@ -48,6 +48,11 @@
     这两种通道都支持阻塞和非阻塞两种模式
 
 ##### AIO(异步非阻塞   NIO2.0)
-    Linux Epoll          Windows IOCP
+    AsynchronousServerSocketChannel和AsynchronousSocketChannel
+    
+    调用底层操作系统支持来实现的真正异步非阻塞
+    Linux            Epoll
+    Windows          IOCP
     NIO2.0的异步套接字通道是真正的异步非阻塞I/O，对应UNIX网络编程中的AIO，不需要用到Selector
-    CompletionHandler接口的实现类作为操作完成的回调
+    异步IO实际的IO操作是交给操作系统来做的，应用程序只负责通知操作系统进行IO和接受操作系统IO完成的通知
+    

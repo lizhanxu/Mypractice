@@ -1,4 +1,4 @@
-package Base.AIO.handler;
+package Base.AIO.server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -32,9 +32,12 @@ public class AsyncServerHandler implements Runnable {
     @Override
     public void run() {
         latch = new CountDownLatch(1);//初始化同步计数器   计数初值count=1
-        serverSocketChannel.accept(this,new AcceptCompletionHandler());
+
+        //第一个参数attachment(附加信息)会被传入第二个参数CompletionHandler的回调方法中使用，如果回调方法不需要这个附加信息，则attachment可以为null
+        //真正的接收处理在AcceptCompletionHandler的回调方法中
+        serverSocketChannel.accept(this,new AcceptCompletionHandler());//不会阻塞    异步接收处理
         try {
-            latch.await();//阻塞当前线程直到count=0
+            latch.await();//阻塞当前线程直到count=0       阻塞在此处保证进程存活
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
