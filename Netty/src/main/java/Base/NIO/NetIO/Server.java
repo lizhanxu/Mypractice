@@ -75,7 +75,7 @@ public class Server {
                     SelectionKey key = null;
                     while (it.hasNext()) {
                         key = it.next();
-                        it.remove();
+                        it.remove();//擦除处理过的事件
                         try {
                             handleInput(key);//处理
                         } catch (Exception e) {//处理异常时直接释放资源

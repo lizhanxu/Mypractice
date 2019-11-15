@@ -18,7 +18,6 @@ import java.net.Socket;
  * @Created by lizhanxu
  */
 public class Client {
-
     public static void main(String[] args) {
         System.out.println("Client Start ...");
         while (true) {
@@ -33,33 +32,41 @@ public class Client {
 
                 System.out.print("请输入: \t");
                 String str = new BufferedReader(new InputStreamReader(System.in)).readLine();//键盘输入
+                if (str.equals("exit")) {
+                    out.println(str);//发送数据
+                    closeAll(out, in, socket);
+                    break;
+                }
                 out.println(str);//发送数据
 //                out.flush();//手动flush
 
-                System.out.println("服务器端返回过来的是: " + in.readLine());//接收数据
+                System.out.println("服务器端响应: " + in.readLine());//接收数据
             } catch (IOException e) {
                 System.err.println("客户端异常：" + e.getMessage());
-            } finally {//关闭资源
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (out != null) {
-                    out.close();
-                }
-                if (socket != null) {
-                    try {
-                        socket.close();
-                    } catch (Exception e) {
-
-                        System.out.println("服务端 finally 异常:" + e.getMessage());
-                    }
-                    socket = null;
-                }
+                closeAll(out,in,socket);
             }
+        }
+    }
+
+    //关闭资源
+    private static void closeAll(PrintWriter out,BufferedReader in,Socket socket) {
+        if (out != null) {
+            out.close();
+        }
+        if (in != null) {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (socket != null) {
+            try {
+                socket.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            socket = null;
         }
     }
 }
