@@ -18,12 +18,12 @@ public class TestServer {
             serverBootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class).
                     childHandler(new TestServerInitializer());
 
-            ChannelFuture channelFuture = serverBootstrap.bind(8090).sync();//绑定
-            channelFuture.channel().closeFuture().sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(8090).sync();//绑定端口，同步等待成功
+            channelFuture.channel().closeFuture().sync();//等待服务端监听端口关闭
         }finally {
+            //优雅退出，释放线程池资源
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
-
         }
 
 

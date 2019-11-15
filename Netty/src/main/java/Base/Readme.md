@@ -41,13 +41,16 @@
 
     并发量和线程数1：1
 
-##### NIO(同步非阻塞)
+##### NIO(非阻塞)
+    1个I/O线程处理多个客户端连接
 
     与ServerSocket和Socket相对应NIO提供了ServerSocketChannel和SocketChannel
 
     这两种通道都支持阻塞和非阻塞两种模式
 
-##### AIO(异步非阻塞   NIO2.0)
+##### AIO(真正的异步非阻塞   NIO2.0)
+    不需要启动额外的I/O线程，被动回调
+    
     AsynchronousServerSocketChannel和AsynchronousSocketChannel
     
     调用底层操作系统支持来实现的真正异步非阻塞
