@@ -41,7 +41,7 @@
 
     并发量和线程数1：1
 
-##### NIO(非阻塞)
+##### NIO(同步非阻塞)
     1个I/O线程处理多个客户端连接
 
     与ServerSocket和Socket相对应NIO提供了ServerSocketChannel和SocketChannel
