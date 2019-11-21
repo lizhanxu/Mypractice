@@ -1,0 +1,34 @@
+### Linux下jdk安装
+
+①下载jdk
+
+​	wget 下载地址   (在官网下载，趁AuthParam没有过期，将地址拷贝过来)
+
+②新建文件夹     /usr/java
+
+③解压下载好的jdk到/usr/java      
+
+​	tar -xzvf file.tar.gz      解压tar.gz
+
+④配置环境变量
+
+​	vi /etc/profile
+
+​	在文件末尾加上
+
+	export JAVA_HOME=/usr/java/jdk1.8.0_231
+	PATH=$JAVA_HOME/bin:$PATH
+	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+⑤使配置生效
+
+​	source /etc/profile
+
+⑥检查是否安装成功
+
+​	java -version
+
+###运行jar
+nohup java -jar helloworld-0.0.1.jar >log.txt &
+//这种方法会把日志文件输入到你指定的文件中，没有则会自动创建。进程会在后台运行。
+###停止jar
+kill -9 pid
