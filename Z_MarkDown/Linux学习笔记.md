@@ -23,3 +23,9 @@ x:1
     curl由于可自定义各种请求参数所以在模拟web请求方面更擅长；wget由于支持ftp和Recursive所以在下载文件方面更擅长。类比的话curl是浏览器，而wget是迅雷9。
     
     netstat -ntlp    查看所有使用的端口
+    
+    chomod     修改文件权限
+    tail 读取显示文件尾部
+    touch 文件名     创建文件
+    mkdir 文件夹名     创建文件夹
+    
