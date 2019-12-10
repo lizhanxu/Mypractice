@@ -29,3 +29,6 @@ x:1
     touch 文件名     创建文件
     mkdir 文件夹名     创建文件夹
     
+    npm list -g --depth 0    查看npm已安装的软件
+    yum list installed       查看yum已安装的软件
+    
