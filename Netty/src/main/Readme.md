@@ -29,3 +29,6 @@
 ###零拷贝
 
 ### NioEventLoopGroup
+
+### Java内存模型
+    所有的变量都存储在主内存中
